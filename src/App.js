@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import InputGroup from './components/InputGroup';
 import ListItem from './components/ListItem';
+import CompletedListItem from './components/CompletedListItem';
 import ListTabs from './components/ListTabs';
 import './styles.scss';
 
@@ -20,8 +21,8 @@ const todo = [
   {
     id: 3,
     date: '10-02-20',
-    item: 'Rotate Tires',
-    completed: false,
+    item: 'Clean Car',
+    completed: true,
   },
   {
     id: 4,
@@ -32,8 +33,24 @@ const todo = [
 ];
 
 export default function App() {
-  const ListItems = todo.map((todoItem) => {
+  const [activeListShown, setActiveListShown] = useState(true);
+  const [activeItemsList, setActiveList] = useState([]);
+  const [completedItemsList, setCompletedList] = useState([]);
+
+  useEffect(() => {
+    const activeItems = todo.filter((item) => !item.completed);
+    setActiveList(activeItems);
+
+    const completedItems = todo.filter((item) => item.completed);
+    setCompletedList(completedItems);
+  }, [activeListShown]);
+
+  const activeListItems = activeItemsList.map((todoItem) => {
     return <ListItem key={todoItem.id} name={todoItem.item} />;
+  });
+
+  const completedListItems = completedItemsList.map((todoItem) => {
+    return <CompletedListItem key={todoItem.id} name={todoItem.item} />;
   });
 
   return (
@@ -41,8 +58,8 @@ export default function App() {
       <h1>To Do List</h1>
       <InputGroup />
       <div class="listGroup">
-        <ListTabs />
-        <ul>{ListItems}</ul>
+        <ListTabs callback={setActiveListShown} active={activeListShown} />
+        <ul>{activeListShown ? activeListItems : completedListItems}</ul>
       </div>
     </div>
   );

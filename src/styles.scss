@@ -50,11 +50,23 @@
         &:hover {
           background-color: #ddd;
         }
+      }
 
-        &:active{
+      .active{
           background-color: #ccc;
-        }
+          padding: 14px 16px;
+          border: none;
+      }
+    }
 
+    .completedListItem {
+      border: none;
+      background-color: inherit;
+      font-size: 20px;
+      cursor: pointer;
+
+      &:hover {
+        color: #2196F3;
       }
     }
 

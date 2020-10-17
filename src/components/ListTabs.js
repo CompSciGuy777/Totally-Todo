@@ -1,12 +1,18 @@
 import React from 'react';
 
-const ListTabs = () => {
+const ListTabs = (props) => {
   return (
-    <div class="listTabs">
-      <button class="tabLinks" onclick={() => {}}>
+    <div className="listTabs">
+      <button
+        className={props.active ? 'tablinks active' : 'tabLinks'}
+        onClick={() => props.callback(true)}
+      >
         Active
       </button>
-      <button class="tabLinks" onclick={() => {}}>
+      <button
+        className={props.active ? 'tabLinks' : 'tablinks active'}
+        onClick={() => props.callback(false)}
+      >
         Completed
       </button>
     </div>
