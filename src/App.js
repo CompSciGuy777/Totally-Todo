@@ -1,4 +1,6 @@
 import React from 'react';
+import InputGroup from './components/InputGroup';
+import ListItem from './components/ListItem';
 import './styles.scss';
 
 const todo = [
@@ -28,17 +30,10 @@ export default function App() {
   return (
     <div className="App">
       <h1>To Do List</h1>
-      <div className="inputGroup">
-        <label for="TodoInput">Your Next To Do: </label>
-        <input id="TodoInput" />
-        <button type="submit">Submit</button>
-      </div>
+      <InputGroup />
       <ul>
-        {todo.map((todo) => (
-          <li className="listItem">
-            <input type="Checkbox" />
-            <div className="todoName">{todo.item}</div>
-          </li>
+        {todo.map((item) => (
+          <ListItem Todo={item} />
         ))}
       </ul>
     </div>
