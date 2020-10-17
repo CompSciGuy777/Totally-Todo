@@ -4,9 +4,9 @@ const ListItem = (props) => {
   const { id, name } = props;
   return (
     <li className="listItem" key={id}>
-      <label class="switch">
+      <label className="switch">
         <input type="checkbox" />
-        <span class="slider round"></span>
+        <span className="slider round"></span>
       </label>
       <div className="todoName">{name}</div>
     </li>

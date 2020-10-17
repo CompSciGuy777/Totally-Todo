@@ -57,7 +57,7 @@ export default function App() {
     <div className="App">
       <h1>To Do List</h1>
       <InputGroup />
-      <div class="listGroup">
+      <div className="listGroup">
         <ListTabs callback={setActiveListShown} active={activeListShown} />
         <ul>{activeListShown ? activeListItems : completedListItems}</ul>
       </div>
