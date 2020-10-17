@@ -1,10 +1,11 @@
 import React from 'react';
 
-const ListItem = (Todo) => {
+const ListItem = (props) => {
+  const { id, name } = props;
   return (
-    <li className="listItem">
+    <li className="listItem" key={id}>
       <input type="Checkbox" />
-      <div className="todoName">{Todo.item}</div>
+      <div className="todoName">{name}</div>
     </li>
   );
 };
