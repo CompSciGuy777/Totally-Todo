@@ -1,6 +1,7 @@
 import React from 'react';
 import InputGroup from './components/InputGroup';
 import ListItem from './components/ListItem';
+import ListTabs from './components/ListTabs';
 import './styles.scss';
 
 const todo = [
@@ -39,7 +40,10 @@ export default function App() {
     <div className="App">
       <h1>To Do List</h1>
       <InputGroup />
-      <ul>{ListItems}</ul>
+      <div class="listGroup">
+        <ListTabs />
+        <ul>{ListItems}</ul>
+      </div>
     </div>
   );
 }
